@@ -34,7 +34,6 @@ def speak(text, coloring="black"):
     """
     Speaks the given the text and insert it to Text Box named showing commands
     """
-    # root.config()
     showing_commands.insert(END, f"VU: {text}\n")
     showing_commands.config(fg=coloring)
     engine.say(text=text)
@@ -45,7 +44,6 @@ def listening():
     """
     listen and then convert into text
     """
-    q = ""
     r = speech_recognition.Recognizer()
     try:
 
@@ -69,22 +67,11 @@ def listening():
     except Exception:
 
         st_bar_change("Error due to nework connection! Please say again", "red")
-        # speak("Error due to nework connection! Please say again")
+        speak("Error due to nework connection! Please say again")
 
         return "error"
 
 
-# def audio_text(audiof):
-#     # Initialize recognizer class
-#     r = speech_recognition.Recognizer()
-#     # audio object
-#     audio = speech_recognition.AudioFile(rf"C:\Users\Arbaz Khan\PycharmProjects\PythonTuts\PythonPrograms\{audiof}")
-#     # read audio object and transcribe
-#     with audio as source:
-#         audio = r.record(source)
-#         result = r.recognize_google(audio)
-#     print(result)
-#     return str(result)
 
 
 def start_vu():
@@ -100,17 +87,13 @@ def start_vu():
     speak("How may I assist you?", "green")
 
     while True:
-        # query = input("Enter your query\n").lower()
         query = listening().lower()
 
-        # query = audio_text(query).lower()
         if "reminder" in query or "notification" in query:
             try:
                 engine.runAndWait()
                 speak("Which remainder do you want to set (Title)?")
-                # query = input("")
                 query = listening().lower()
-                # query = audio_text(query)
                 title = query
                 engine.runAndWait()
                 speak("Which message do you want to set as remainder?")
