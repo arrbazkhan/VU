@@ -14,7 +14,7 @@ from plyer import notification
 from bs4 import BeautifulSoup
 import requests
 from functools import partial
-import youtube_downloader, SWG_Game_in_Tkinter
+import SWG_Game_in_Tkinter
 
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty('voices', )
